@@ -18,13 +18,6 @@
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    position: relative;
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -35,12 +28,7 @@ body {
     color: var(--text-color);
     background: var(--background);
     min-height: 100vh;
-    width: 100%;
-    max-width: 100%;
     overflow-x: hidden;
-    position: relative;
-    margin: 0;
-    padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -68,12 +56,9 @@ img {
 }
 
 .container {
-    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px;
-    position: relative;
-    box-sizing: border-box;
+    padding: 0 20px;
 }
 
 .section-title {
@@ -189,7 +174,7 @@ img {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px 0 80px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -488,353 +473,186 @@ img {
 
 /* Guidelines for Registration Section */
 .registration-guidelines {
-    padding: 2rem 0;
-    background-color: #f8fafc;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
-.registration-guidelines .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    width: 100%;
+    padding: 5rem 0;
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .guidelines-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.guideline-item {
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
     padding: 2rem;
-    max-height: 80vh;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #cbd5e1 #f1f5f9;
-}
-
-.guidelines-content::-webkit-scrollbar {
-    width: 6px;
-}
-
-.guidelines-content::-webkit-scrollbar-track {
-    background: #f1f5f9;
-}
-
-.guidelines-content::-webkit-scrollbar-thumb {
-    background-color: #cbd5e1;
-    border-radius: 3px;
-}
-
-.guideline-item {
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(60, 80, 95, 0.1);
     display: flex;
+    align-items: flex-start;
     gap: 1.5rem;
-    background: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(60, 80, 95, 0.05);
 }
 
-/* Hover effects removed for mobile */
-.guideline-item {
-    /* No hover effects */
+.guideline-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(60, 80, 95, 0.15);
 }
 
 .guideline-icon {
-    font-size: 2rem;
-    color: #2563eb;
-    margin-top: 0.25rem;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #3c5060 0%, #1a2a35 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(60, 80, 95, 0.2);
 }
 
 .guideline-text h3 {
-    margin-bottom: 0.75rem;
-    color: #1e293b;
+    color: #3c5060;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
-.guideline-text p, 
-.guideline-text ul, 
-.guideline-text ol {
-    color: #64748b;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+.guideline-text p {
+    color: #3c5060;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
 }
 
 .guideline-text ul,
-.guideline-text ol {
-    padding-left: 1.5rem;
+.guidelines-intro {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    text-align: center;
+    font-size: 1.15rem;
+    color: #3c5060;
+    line-height: 1.9;
+    padding: 0 1.5rem;
 }
 
 .guideline-text li {
     margin-bottom: 0.5rem;
-}
-
-/* Contact Section */
-.contact {
-    padding: 2rem 0;
-    background-color: #f9fafb;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
-.contact .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    width: 100%;
-}
-
-.contact-content {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    max-height: 80vh;
-}
-
-.contact-info {
-    padding: 2rem;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #cbd5e1 #f1f5f9;
-}
-
-.contact-info::-webkit-scrollbar {
-    width: 6px;
-}
-
-.contact-info::-webkit-scrollbar-track {
-    background: #f1f5f9;
-}
-
-.contact-info::-webkit-scrollbar-thumb {
-    background-color: #cbd5e1;
-    border-radius: 3px;
-}
-
-.contact-item {
-    background: white;
-    border-radius: 10px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.contact-item i {
-    font-size: 1.75rem;
-    color: #2563eb;
-    margin-bottom: 1rem;
-    display: block;
-}
-
-.contact-item h3 {
-    margin-bottom: 0.5rem;
-    color: #1e293b;
-}
-
-.contact-item p, 
-.contact-item a {
-    color: #64748b;
+    color: #3c5060;
     line-height: 1.6;
-    margin: 0;
 }
 
-.contact-item a {
-    color: #2563eb;
-    text-decoration: none;
-    transition: color 0.3s ease;
+guideline-text em {
+    font-style: italic;
+    color: #3c5060;
+    opacity: 0.9;
 }
 
-.contact-item a:hover {
-    color: #1d4ed8;
-    text-decoration: underline;
-}
-
-.contact-form {
-    padding: 2rem;
-    background: #f8fafc;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #cbd5e1 #e2e8f0;
-}
-
-.contact-form::-webkit-scrollbar {
-    width: 6px;
-}
-
-.contact-form::-webkit-scrollbar-track {
-    background: #e2e8f0;
-}
-
-.contact-form::-webkit-scrollbar-thumb {
-    background-color: #cbd5e1;
-    border-radius: 3px;
-}
-
-/* Tablet and Desktop */
-@media (min-width: 768px) {
-    /* Registration Grid Layout */
-    .registration-grid {
-        grid-template-columns: repeat(3, 1fr);
+/* ===== Responsive Design ===== */
+/* Tablets and below */
+@media (max-width: 992px) {
+    .guidelines {
+        padding: 5rem 0;
+    }
+    
+    .guidelines-grid {
+        grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
     
-    .registration-category {
-        margin-bottom: 0;
+    .guideline-card {
+        padding: 2.5rem 2rem;
     }
     
-    .registration-items {
-        grid-template-columns: 1fr;
-    }
-    
-    /* Registration Guidelines */
-    .guideline-item {
-        padding: 1.5rem;
-        text-align: left;
-    }
-    
-    .guideline-icon {
-        margin: 0.25rem 0 0 0;
-    }
-    
-    /* Contact Section */
-    .contact-info {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-    
-    .contact {
-        padding: 4rem 0;
+    .guideline-card h3 {
+        font-size: 1.4rem;
     }
 }
 
-/* Scrollable Sections */
-.contact-content,
-.registration-content,
-.guidelines-content {
-    max-height: calc(100vh - 150px);
-    overflow-y: auto;
-    padding-right: 15px;
-    margin-right: -15px;
-    scrollbar-width: thin;
-    scrollbar-color: #cbd5e1 #f1f5f9;
+/* Mobile Menu Styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
 }
 
-.contact-content::-webkit-scrollbar,
-.registration-content::-webkit-scrollbar,
-.guidelines-content::-webkit-scrollbar {
-    width: 6px;
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #3c5060;
+    transition: all 0.3s ease-in-out;
 }
 
-.contact-content::-webkit-scrollbar-track,
-.registration-content::-webkit-scrollbar-track,
-.guidelines-content::-webkit-scrollbar-track {
-    background: #f1f5f9;
-    border-radius: 10px;
-}
-
-.contact-content::-webkit-scrollbar-thumb,
-.registration-content::-webkit-scrollbar-thumb,
-.guidelines-content::-webkit-scrollbar-thumb {
-    background-color: #cbd5e1;
-    border-radius: 10px;
-}
-
-/* Mobile and Tablet */
+/* Mobile devices */
 @media (max-width: 992px) {
-    /* Disable animations */
-    *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
+    .hamburger {
+        display: block;
     }
     
-    /* Registration Section Layout */
-    .registration-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
     }
     
-    .registration-category {
-        margin-bottom: 2rem;
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
     }
     
-    .registration-category h3 {
-        text-align: center;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid #e2e8f0;
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
     
-    .registration-items {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .registration-item {
-        margin: 0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    .contact-content {
-        grid-template-columns: 1fr;
-        max-height: 90vh;
-    }
-    
-    .contact-info,
-    .contact-form {
-        max-height: 45vh;
-    }
-    
-    .registration-guidelines .container,
-    .contact .container {
-        padding: 1rem;
-    }
-    
-    .guidelines-content,
-    .contact-content {
-        max-height: 90vh;
-    }
-    /* Registration Guidelines */
-    .guideline-item {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
         flex-direction: column;
-        gap: 1rem;
-        padding: 1.25rem;
+        background-color: white;
+        width: 100%;
         text-align: center;
-        margin-bottom: 1rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+        z-index: 1000;
     }
     
-    .guideline-icon {
-        margin: 0 auto 0.5rem;
+    .nav-menu.active {
+        left: 0;
     }
     
-    /* Contact Section */
-    .contact {
-        padding: 1.5rem 0;
+    .nav-item {
+        margin: 1.5rem 0;
     }
     
-    .contact-item {
-        padding: 1.25rem;
+    .dropdown-menu {
+        position: static;
+        display: none;
+        width: 100%;
+        margin-top: 1rem;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        padding: 0;
     }
     
-    .contact-item i {
-        font-size: 1.5rem;
-        margin-bottom: 0.75rem;
+    .dropdown:hover .dropdown-menu {
+        display: none;
+    }
+    
+    .dropdown.active .dropdown-menu {
+        display: block;
     }
 }
 
-/* Small mobile devices */
-@media (max-width: 576px) {
+/* Mobile devices */
+@media (max-width: 768px) {
     .guidelines {
         padding: 4rem 0;
     }
@@ -912,19 +730,8 @@ img {
 
 @media (max-width: 992px) {
     .hamburger {
-    display: none;
-    cursor: pointer;
-    padding: 20px;
-    z-index: 1001;
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 70px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-}
+        display: block;
+    }
     
     .nav-menu {
         position: fixed;
@@ -942,14 +749,6 @@ img {
 
     .nav-menu.active {
         left: 0;
-    }
-    
-    .hamburger {
-        display: flex;
-    }
-    
-    .nav-logo {
-        margin-left: 40px;
     }
 
     .hero-content {
