@@ -489,122 +489,16 @@ img {
 
 /* Guidelines for Registration Section */
 .registration-guidelines {
-    padding: 5rem 0;
-    background: rgba(255, 255, 255, 0.8);
-}
-
-.guidelines-content {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.guideline-item {
-    background: white;
-    border-radius: 15px;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 10px 30px rgba(60, 80, 95, 0.1);
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(60, 80, 95, 0.05);
-}
-
-.guideline-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(60, 80, 95, 0.15);
-}
-
-.guideline-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #3c5060 0%, #1a2a35 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    color: white;
-    font-size: 1.2rem;
-    box-shadow: 0 5px 15px rgba(60, 80, 95, 0.2);
-}
-
-.guideline-text h3 {
-    color: #3c5060;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.guideline-text p {
-    color: #3c5060;
-    line-height: 1.7;
-    margin-bottom: 0.5rem;
-}
-
-.guideline-text ul,
-.guidelines-intro {
-    max-width: 900px;
-    margin: 0 auto 4rem;
-    text-align: center;
-    font-size: 1.15rem;
-    color: #3c5060;
-    line-height: 1.9;
-    padding: 0 1.5rem;
-}
-
-.guideline-text li {
-    margin-bottom: 0.5rem;
-    color: #3c5060;
-    line-height: 1.6;
-}
-
-guideline-text em {
-    font-style: italic;
-    color: #3c5060;
-    opacity: 0.9;
-}
-
-/* ===== Responsive Design ===== */
-/* Tablets and below */
-@media (max-width: 992px) {
-    .guidelines {
-        padding: 5rem 0;
-    }
-    
-    .guidelines-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-    }
-    
-    .guideline-card {
-        padding: 2.5rem 2rem;
-    }
-    
-    .guideline-card h3 {
-        font-size: 1.4rem;
-    }
-}
-
-/* Registration Guidelines Section */
-.registration-guidelines {
     padding: 4rem 0;
     background-color: #f8fafc;
 }
 
-.guidelines-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
 .guideline-item {
     display: flex;
     gap: 1.5rem;
     background: white;
-    padding: 1.5rem;
     border-radius: 10px;
+    padding: 2rem;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -616,340 +510,150 @@ guideline-text em {
 }
 
 .guideline-icon {
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
+    font-size: 2rem;
+    color: #2563eb;
+    margin-top: 0.25rem;
 }
 
 .guideline-text h3 {
-    color: #1e40af;
     margin-bottom: 0.75rem;
-    font-size: 1.25rem;
+    color: #1e293b;
 }
 
 .guideline-text p, 
-.guideline-text li {
-    color: #4b5563;
+.guideline-text ul, 
+.guideline-text ol {
+    color: #64748b;
     line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.guideline-text ul,
+.guideline-text ol {
+    padding-left: 1.5rem;
+}
+
+.guideline-text li {
     margin-bottom: 0.5rem;
 }
 
-.guideline-text ol,
-.guideline-text ul {
-    padding-left: 1.5rem;
-    margin: 0.75rem 0;
+.guidelines-content {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 /* Contact Section */
 .contact {
-    padding: 2rem 1rem;
-    background-color: #f8fafc;
+    padding: 2rem 0;
+    background-color: #f9fafb;
 }
 
 .contact-content {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-}
-
-@media (min-width: 992px) {
-    .contact {
-        padding: 4rem 0;
-    }
-    
-    .contact-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-    }
+    padding: 0 1rem;
 }
 
 .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .contact-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.75rem;
     background: white;
-    padding: 1.5rem 1rem;
-    margin: 0 0.5rem;
     border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .contact-item i {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     color: #2563eb;
-    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    display: block;
 }
 
 .contact-item h3 {
-    color: #1e40af;
     margin-bottom: 0.5rem;
-    font-size: 1.25rem;
+    color: #1e293b;
 }
 
-.contact-item p {
-    color: #4b5563;
+.contact-item p, 
+.contact-item a {
+    color: #64748b;
     line-height: 1.6;
     margin: 0;
 }
 
-.contact-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+.contact-item a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.form-group {
-    margin-bottom: 1.25rem;
+.contact-item a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
-}
-
-.submit-btn {
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    width: 100%;
-}
-
-.submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-}
-
-/* Mobile Menu Styles */
-.hamburger {
-    display: none;
-    cursor: pointer;
-    padding: 15px;
-    z-index: 1001;
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 24px;
-}
-
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: #3c5060;
-    transition: all 0.3s ease-in-out;
+/* Tablet and Desktop */
+@media (min-width: 768px) {
+    /* Registration Guidelines */
+    .guideline-item {
+        padding: 2rem;
+        text-align: left;
+    }
+    
+    .guideline-icon {
+        margin: 0.25rem 0 0 0;
+    }
+    
+    /* Contact Section */
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .contact {
+        padding: 4rem 0;
+    }
 }
 
 /* Mobile and Tablet */
-@media (max-width: 992px) {
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
-        position: relative;
-    }
-    
-    .container {
-        width: 100%;
-        max-width: 100%;
-        padding: 0 15px;
-        margin: 0;
-    }
-    
-    .hamburger {
-        display: flex;
-    }
-    
-    .navbar {
-        width: 100%;
-        padding: 0;
-    }
-    
-    .nav-container {
-        width: 100%;
-        padding: 0 15px 0 60px;
-        margin: 0;
-    }
-    
-    .contact-item,
-    .guideline-item,
-    .contact-form {
-        width: 100%;
-        margin: 0 0 1.5rem;
-        box-sizing: border-box;
-    }
-    
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        width: 100%;
-        background: white;
-        padding: 1rem 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        transition: 0.3s;
-    }
-    
-    .nav-menu.active {
-        left: 0;
-    }
-    
-    .nav-item {
-        margin: 0;
-        text-align: center;
-    }
-    
-    .nav-link {
-        display: block;
-        padding: 1rem 0;
-        font-size: 1.1rem;
-    }
-    
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-    
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        gap: 0;
-        flex-direction: column;
-        background-color: white;
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: 2rem 0;
-        z-index: 1000;
-    }
-    
-    .nav-menu.active {
-        left: 0;
-    }
-    
-    .nav-item {
-        margin: 1.5rem 0;
-    }
-    
-    .dropdown-menu {
-        position: static;
-        display: none;
-        width: 100%;
-        margin-top: 1rem;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        border: none;
-        padding: 0;
-    }
-    
-    .dropdown:hover .dropdown-menu {
-        display: none;
-    }
-    
-    .dropdown.active .dropdown-menu {
-        display: block;
-    }
-}
-
-/* Tablet and below */
 @media (max-width: 992px) {
     /* Registration Guidelines */
     .guideline-item {
         flex-direction: column;
         gap: 1rem;
-        padding: 1.25rem;
+        padding: 1.5rem;
+        text-align: center;
     }
     
     .guideline-icon {
-        margin: 0 auto;
-    }
-    
-    .guideline-text {
-        text-align: center;
+        margin: 0 auto 0.5rem;
     }
     
     /* Contact Section */
     .contact {
-        padding: 2rem 0;
-    }
-    
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 0 1rem;
+        padding: 1.5rem 0;
     }
     
     .contact-item {
-        flex-direction: column;
-        text-align: center;
         padding: 1.25rem;
-        margin: 0 0.5rem;
     }
     
     .contact-item i {
-        margin: 0 auto 0.75rem;
-        font-size: 1.75rem;
-    }
-    
-    .contact-form {
-        padding: 1.5rem;
-        margin: 0 0.5rem;
-    }
-    
-    .section-title {
-        font-size: 1.75rem;
-        margin-bottom: 1.5rem;
-        padding: 0 1rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
     }
 }
 
