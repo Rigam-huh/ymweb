@@ -231,17 +231,29 @@ img {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     cursor: pointer;
     z-index: 1100;
+    position: relative;
 }
 
 .hamburger .bar {
-    width: 24px;
+    width: 28px;
     height: 3px;
-    background: #3c5060;
+    background: #000000;
     border-radius: 2px;
-    transition: var(--transition);
+    transition: all 0.3s ease;
+}
+
+/* Animate into X when active */
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* Dropdown Styles */
@@ -671,30 +683,83 @@ guideline-text em {
 
 @media (max-width: 992px) {
     .hamburger {
-        display: block;
+        display: flex;
+        position: relative;
+        z-index: 1001;
+    }
+    
+    .nav-container {
+        padding: 0 20px;
+        position: relative;
     }
     
     .nav-menu {
         position: fixed;
         left: -100%;
         top: 70px;
+        bottom: 0;
         gap: 0;
         flex-direction: column;
         background-color: white;
-        width: 100%;
-        text-align: center;
+        width: 80%;
+        max-width: 300px;
+        text-align: left;
         transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(60, 80, 95, 0.1);
-        padding: 2rem 0;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem 1rem;
+        overflow-y: auto;
+        z-index: 1000;
     }
 
     .nav-menu.active {
         left: 0;
     }
 
+    .nav-item {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
     .nav-link {
-        padding: 0.9rem 0;
+        display: block;
+        padding: 0.8rem 1rem;
         font-size: 1.05rem;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+
+    .nav-link:hover {
+        background-color: #f5f5f5;
+    }
+
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0.5rem 0 0 1rem;
+        background: transparent;
+        border: none;
+        display: none;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+    }
+
+    .dropdown-menu li {
+        margin: 0.3rem 0;
+    }
+
+    .dropdown-menu a {
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #f0f0f0;
     }
 
     .hero-content {
