@@ -223,45 +223,36 @@ img {
     color: #1a2a35;
 }
 
-/* Show hamburger only on mobile */
+/* Hamburger base styles */
 .hamburger {
-    display: flex; /* was none */
+    display: none;
     width: 40px;
     height: 40px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
     cursor: pointer;
     z-index: 1100;
-    position: relative;
 }
 
-/* Hamburger bars */
 .hamburger .bar {
-    width: 28px;
+    width: 24px;
     height: 3px;
     background: #3c5060;
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
-/* Animate into X when active */
-.hamburger.active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.active .bar:nth-child(2) {
-    opacity: 0;
-}
-.hamburger.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
 }
 
-/* Dropdown menu for mobile */
 .dropdown-menu {
     position: absolute;
-    top: 60px;
-    right: 0;
+    top: 100%;
+    left: 0;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(60, 80, 95, 0.1);
@@ -276,14 +267,12 @@ img {
     padding: 1rem 0;
 }
 
-/* Show when active */
-.dropdown-menu.active {
+.dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-/* Links */
 .dropdown-menu li {
     padding: 0;
 }
@@ -299,29 +288,6 @@ img {
 .dropdown-menu a:hover {
     background-color: rgba(60, 80, 95, 0.05);
     color: #1a2a35;
-}
-
-/* Responsive: only show hamburger under 768px */
-@media (min-width: 769px) {
-    .hamburger {
-        display: none;
-    }
-    .dropdown-menu {
-        position: static;
-        display: flex;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        background: transparent;
-        padding: 0;
-    }
-    .dropdown-menu li {
-        display: inline-block;
-    }
-    .dropdown-menu a {
-        padding: 0.75rem 1rem;
-    }
 }
 
 /* Hero Section */
