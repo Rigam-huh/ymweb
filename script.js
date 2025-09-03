@@ -81,70 +81,111 @@ function initSlideshow() {
 // Initialize slideshow when DOM is loaded
 document.addEventListener('DOMContentLoaded', initSlideshow);
 
-// Mobile Navigation Toggle
+// Navigation and Dropdown Toggle Functionality
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    const isMobile = window.innerWidth <= 992;
 
-    if (hamburger && navMenu) {
-        // Toggle mobile menu
-        const toggleMenu = () => {
+    // Toggle mobile menu function
+    const toggleMenu = (forceClose = false) => {
+        if (forceClose) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        } else {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
             document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        };
+        }
+    };
 
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMenu();
-        });
+    // Toggle dropdown function
+    const toggleDropdown = (dropdown, show = null) => {
+        const isShowing = show !== null ? show : !dropdown.classList.contains('show');
+        dropdown.classList.toggle('show', isShowing);
+        const toggle = dropdown.previousElementSibling;
+        if (toggle && toggle.matches('.dropdown-toggle')) {
+            toggle.setAttribute('aria-expanded', isShowing);
+        }
+    };
 
-        // Handle dropdown toggles
+    // Initialize dropdown toggles
+    const initDropdowns = () => {
         dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                if (window.innerWidth <= 992) { // Only for mobile
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const dropdown = toggle.nextElementSibling;
-                    if (dropdown && dropdown.classList.contains('dropdown-menu')) {
-                        dropdown.classList.toggle('show');
-                        // Close other open dropdowns
+            // Remove any existing listeners to prevent duplicates
+            const newToggle = toggle.cloneNode(true);
+            toggle.parentNode.replaceChild(newToggle, toggle);
+            
+            newToggle.addEventListener('click', (e) => {
+                const dropdown = newToggle.nextElementSibling;
+                if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+                    if (isMobile) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleDropdown(dropdown);
+                        
+                        // Close other dropdowns on mobile
                         document.querySelectorAll('.dropdown-menu').forEach(menu => {
                             if (menu !== dropdown) {
-                                menu.classList.remove('show');
+                                toggleDropdown(menu, false);
                             }
                         });
                     }
                 }
             });
         });
+    };
+
+    // Initialize everything if elements exist
+    if (hamburger && navMenu) {
+        // Initialize dropdowns
+        initDropdowns();
+
+        // Hamburger menu toggle
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
 
         // Close menu when clicking on a nav link (except dropdown toggles)
         document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 992) {
-                    toggleMenu();
+                if (isMobile) {
+                    toggleMenu(true); // Force close menu on mobile
                 }
             });
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (navMenu.classList.contains('active') && 
-                !e.target.closest('.nav-menu') && 
-                !e.target.closest('.hamburger')) {
-                toggleMenu();
-            }
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth > 992) {
+                    // Reset mobile menu when resizing to desktop
+                    toggleMenu(true);
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                }
+                initDropdowns(); // Re-initialize dropdowns after resize
+            }, 250);
         });
 
-        // Close dropdowns when clicking outside on mobile
+        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 992 && 
-                !e.target.closest('.dropdown') && 
-                !e.target.closest('.hamburger')) {
+            if (isMobile && navMenu.classList.contains('active')) {
+                if (!e.target.closest('.nav-menu') && !e.target.closest('.hamburger')) {
+                    toggleMenu(true);
+                }
+            }
+            
+            // Close dropdowns when clicking outside on mobile
+            if (isMobile && !e.target.closest('.dropdown') && !e.target.closest('.hamburger')) {
                 document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                    menu.classList.remove('show');
+                    toggleDropdown(menu, false);
                 });
             }
         });
