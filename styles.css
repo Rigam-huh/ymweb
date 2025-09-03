@@ -334,6 +334,12 @@ img {
 
 /* ✅ Mobile overrides — dropdown expands inline, no scroll */
 @media (max-width: 992px) {
+    .hamburger {
+        display: flex;
+        position: relative;
+        z-index: 1001;
+    }
+    
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -353,6 +359,23 @@ img {
 
     .nav-menu.active {
         left: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 0.8rem 1rem;
+        font-size: 1.05rem;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+
+    .nav-link:hover {
+        background-color: #f5f5f5;
     }
 
     .dropdown-menu {
@@ -412,9 +435,6 @@ img {
         transform: rotate(180deg);
     }
 }
-
-/* (The rest of your Hero, About, Guidelines, Registration, Speakers, Contact, Gallery, FAQ, Footer styles remain unchanged) */
-
 
 /* Hero Section */
 .hero {
