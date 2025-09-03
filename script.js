@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = '';
         } else {
             hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            navMenu.classList.toggle('show');
             document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         }
     };
