@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    const isMobile = window.innerWidth <= 992;
+    const isMobile = () => window.innerWidth <= 992; // ✅ function, not fixed value
 
     // Toggle mobile menu function
     const toggleMenu = (forceClose = false) => {
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = '';
         } else {
             hamburger.classList.toggle('active');
-            navMenu.classList.toggle('show');
+            navMenu.classList.toggle('active');
             document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         }
     };
@@ -114,18 +114,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize dropdown toggles
     const initDropdowns = () => {
         dropdownToggles.forEach(toggle => {
-            // Remove any existing listeners to prevent duplicates
             const newToggle = toggle.cloneNode(true);
             toggle.parentNode.replaceChild(newToggle, toggle);
-            
+
             newToggle.addEventListener('click', (e) => {
                 const dropdown = newToggle.nextElementSibling;
                 if (dropdown && dropdown.classList.contains('dropdown-menu')) {
-                    if (isMobile) {
+                    if (isMobile()) {
                         e.preventDefault();
                         e.stopPropagation();
                         toggleDropdown(dropdown);
-                        
+
                         // Close other dropdowns on mobile
                         document.querySelectorAll('.dropdown-menu').forEach(menu => {
                             if (menu !== dropdown) {
@@ -138,52 +137,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Initialize everything if elements exist
     if (hamburger && navMenu) {
-        // Initialize dropdowns
         initDropdowns();
 
-        // Hamburger menu toggle
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleMenu();
         });
 
-        // Close menu when clicking on a nav link (except dropdown toggles)
         document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
             link.addEventListener('click', () => {
-                if (isMobile) {
-                    toggleMenu(true); // Force close menu on mobile
+                if (isMobile()) {
+                    toggleMenu(true);
                 }
             });
         });
 
-        // Handle window resize
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
-                if (window.innerWidth > 992) {
-                    // Reset mobile menu when resizing to desktop
+                if (!isMobile()) {
                     toggleMenu(true);
                     document.querySelectorAll('.dropdown-menu').forEach(menu => {
                         menu.classList.remove('show');
                     });
                 }
-                initDropdowns(); // Re-initialize dropdowns after resize
+                initDropdowns();
             }, 250);
         });
 
-        // Close menu when clicking outside
+        // ✅ Fixed: Close menu and dropdowns on outside click
         document.addEventListener('click', (e) => {
-            if (isMobile && navMenu.classList.contains('active')) {
+            if (isMobile() && navMenu.classList.contains('active')) {
                 if (!e.target.closest('.nav-menu') && !e.target.closest('.hamburger')) {
                     toggleMenu(true);
                 }
             }
-            
-            // Close dropdowns when clicking outside on mobile
-            if (isMobile && !e.target.closest('.dropdown') && !e.target.closest('.hamburger')) {
+
+            if (isMobile() && !e.target.closest('.dropdown') && !e.target.closest('.hamburger')) {
                 document.querySelectorAll('.dropdown-menu').forEach(menu => {
                     toggleDropdown(menu, false);
                 });
@@ -283,11 +275,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-  
-
-
-
-
 
 // Navbar background change on scroll
 window.addEventListener('scroll', () => {
@@ -370,11 +357,14 @@ document.querySelectorAll('.event-card, .feature, .contact-item').forEach(elemen
 // Keyboard navigation support
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        // Close mobile menu
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-        
-        // Close FAQ items
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+
         faqItems.forEach(item => {
             item.classList.remove('active');
         });
