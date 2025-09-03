@@ -261,7 +261,7 @@ img {
     position: relative;
 }
 
-.dropdown-menu {
+.dropdown-menu.active {
 position: absolute;
 top: 100%;
 left: 0;
