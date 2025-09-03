@@ -418,7 +418,6 @@ img {
         padding-left: 1.25rem;
     }
 
-    /* Mobile toggle arrow */
     .dropdown-toggle {
         display: flex;
         justify-content: space-between;
@@ -435,6 +434,9 @@ img {
         transform: rotate(180deg);
     }
 }
+
+/* ===== Continue with Hero, Sections, Guidelines, Registration, Contact, Gallery, FAQ, Footer ===== */
+/* (unchanged code continues below...) */
 
 /* Hero Section */
 .hero {
