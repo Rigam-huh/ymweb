@@ -37,7 +37,7 @@ function initSlideshow() {
         clearInterval(slideInterval);
         startSlideshow();
     }
-
+    
     // Event listeners
     if (prevBtn && nextBtn) {
         prevBtn.addEventListener('click', () => {
@@ -85,24 +85,47 @@ document.addEventListener('DOMContentLoaded', initSlideshow);
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
     if (hamburger && navMenu) {
         // Toggle mobile menu
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
+        const toggleMenu = () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
-            
-            // Toggle body scroll when menu is open
             document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        };
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
         });
 
-        // Close menu when clicking on a nav link
-        document.querySelectorAll('.nav-link').forEach(link => {
+        // Handle dropdown toggles
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) { // Only for mobile
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdown = toggle.nextElementSibling;
+                    if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+                        dropdown.classList.toggle('show');
+                        // Close other open dropdowns
+                        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                            if (menu !== dropdown) {
+                                menu.classList.remove('show');
+                            }
+                        });
+                    }
+                }
+            });
+        });
+
+        // Close menu when clicking on a nav link (except dropdown toggles)
+        document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
             link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable scrolling
+                if (window.innerWidth <= 992) {
+                    toggleMenu();
+                }
             });
         });
 
@@ -111,9 +134,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navMenu.classList.contains('active') && 
                 !e.target.closest('.nav-menu') && 
                 !e.target.closest('.hamburger')) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = 'auto'; // Re-enable scrolling
+                toggleMenu();
+            }
+        });
+
+        // Close dropdowns when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992 && 
+                !e.target.closest('.dropdown') && 
+                !e.target.closest('.hamburger')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
             }
         });
     }
